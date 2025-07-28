@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><github-weather-app></title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f6f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 40px 20px;
+        margin: 0;
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+      }
+
+      .search-form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      .search-form input {
+        flex: 1;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 6px 0 0 6px;
+        outline: none;
+      }
+
+      .search-form button {
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #7c3aed;
+        color: white;
+        border-radius: 0 6px 6px 0;
+        cursor: pointer;
+      }
+
+      .weather-display h1 {
+        font-size: 24px;
+        margin: 0 0 10px;
+      }
+
+      .weather-display p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #555;
+      }
+
+      .temperature-box {
+        position: absolute;
+        right: 700px;
+        top: 130px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .temperature-box span#emoji {
+        font-size: 36px;
+      }
+
+      .footer {
+        margin-top: 30px;
+        font-size: 18px;
+      }
+
+      .footer a {
+        text-decoration: none;
+        color: #7c3aed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="search-form" id="search-form">
+        <input type="text" id="city-input" placeholder="Enter a city..." />
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="weather-display">
+        <h1 id="city-name">Paris</h1>
+        <p id="weather-description">Saturday 19:45, moderate rain</p>
+        <p id="details">
+          Humidity: <strong id="humidity">87%</strong>, Wind:
+          <strong id="wind">7.2 km/h</strong>
+        </p>
+        <div class="temperature-box">
+          <span id="emoji">☀️</span>
+          <span id="temperature">24°C</span>
+        </div>
+      </div>
+
+      <a href="mailto:nomfundiso@example.com" class="contact-btn">Contact Me</a>
+
+      <footer class="footer">
+        <p>
+          This project was coded by
+          <a href="https://github.com/nomfundiso" target="_blank"
+            >Nomfundiso Yolanda Mbange</a
+          >
+          >, and is on
+          <a href="https://github.com/" target="_blank">GitHub</a> and
+          <a href="https://github-weather-app.netlify.app" target="_blank"
+            >hosted on netlify</a
+          >.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Dynamic greeting based on time
+      const now = new Date();
+      const greeting =
+        now.getHours() < 12 ? "Good morning!" : "Good afternoon!";
+      const weatherDescription = document.getElementById("weather-description");
+      weatherDescription.textContent = `${greeting} It's currently moderate rain in Paris.`;
+
+      // Handle search form
+      document
+        .getElementById("search-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const city = document.getElementById("city-input").value;
+          document.getElementById("city-name").textContent = city;
+          document.getElementById(
+            "weather-description"
+          ).textContent = `Weather info for ${city} coming soon...`;
+        });
+    </script>
+  </body>
+</html>
